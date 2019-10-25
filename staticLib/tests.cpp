@@ -6,7 +6,6 @@
 #define Length double
 
 #include "catch.hpp"
-#include <iostream>
 extern "C" {
 #include "static.h"
 };
