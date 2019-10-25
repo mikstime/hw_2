@@ -4,9 +4,14 @@
 
 #ifndef HW_2_STATIC_H
 #define HW_2_STATIC_H
+
+#define Points int32_t
+#define Point int16_t
+#define Coordinate int8_t
+#define Length double
+
 #include <stdlib.h>
 #include <stdio.h>
-#include "types.h"
 #include "compute_distance.h"
 #define Points int32_t
 void readFromStream(FILE* in, Points* arr, size_t size);

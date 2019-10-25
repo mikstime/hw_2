@@ -10,4 +10,4 @@ set(HEADERS include/dynamic.h include/compute_distance.h)
 
 add_library(dynamic_lib SHARED ${SOURCES} ${HEADERS})
 target_include_directories(dynamic_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} include)
-target_link_libraries(calculus_lib)
+#target_link_libraries(calculus_lib)

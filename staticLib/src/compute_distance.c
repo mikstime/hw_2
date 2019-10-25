@@ -5,6 +5,8 @@
 #define Point int16_t
 #define Coordinate int8_t
 #define Length double
+
+#include <stdlib.h>
 #include <math.h>
 
 double distance(Point p1, Point p2) {

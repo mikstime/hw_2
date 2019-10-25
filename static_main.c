@@ -7,11 +7,14 @@
 
 int main() {
     size_t size;
-    if(scanf("%zu", &size))
+    if(scanf("%zu", &size) != 1)
         return EXIT_FAILURE;
     Points* array = calloc(size, sizeof(Points));
     for(size_t i = 0; i < size; i++)
-        scanf("%i", &array[i]);
+        if(scanf("%i", &array[i]) != 1) {
+            free(array);
+            return EXIT_FAILURE;
+        }
     Length res = static_run(array, size);
     printf("\n%lf\n", res);
     free(array);

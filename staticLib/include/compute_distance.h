@@ -4,7 +4,6 @@
 #ifndef STATIC_VERSION_LIB_H
 #define STATIC_VERSION_LIB_H
 
-#include "types.h"
 #include <math.h>
 //*******************************
 Length distance(Point p1, Point p2);
