@@ -14,7 +14,7 @@ double distance(Point p1, Point p2) {
     deltaX = x2 - x1;
     deltaY = y2 - y1;
 
-    return sqrt(deltaX * deltaX + deltaY * deltaY);
+    return sqrt((double)(deltaX * deltaX + deltaY * deltaY));
 }
 
 double computeTotalDistance(const int32_t* const array, size_t size) {
