@@ -2,14 +2,9 @@
 // Created by MBTSKY on 24.10.2019.
 //
 
-#include <stdbool.h>
 #include <stdlib.h>
-#include <string.h>
 #include <sys/wait.h>
-#include <zconf.h>
 
-
-#include <stdlib.h>
 #include <stdio.h>
 #include "compute_distance.h"
 #include "types.h"
