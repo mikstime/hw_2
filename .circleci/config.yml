@@ -21,9 +21,9 @@ jobs:
       - run:
           name: Installing CppCheck
           command: 'apt-get update && sudo apt-get install cppcheck -y'
-      - run:
-          name: CppCheck
-          command: 'cppcheck main.c quick_sort.c visitors.c'
+#      - run:
+#          name: CppCheck
+#          command: 'cppcheck main.c quick_sort.c visitors.c'
       - run:
           name: Creating Build Files
           command: 'cmake -H. -Bbuild'
@@ -32,7 +32,7 @@ jobs:
           command: 'cmake --build build'
       - run:
           name: Task testing
-          command: './bin/hw_2_tests'
-#      - run:
-#          name: Valgrind check
-#          command: 'valgrind --leak-check=yes ./bin/hw_1  < ./.circleci/testinput.txt'
+          command: './bin/static_tests'
+      - run:
+          name: Valgrind check
+          command: 'valgrind --leak-check=yes ./bin/static_tests'

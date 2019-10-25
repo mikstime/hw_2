@@ -1,38 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define Point int32_t
-#define Coordinate int32_t
+#include "compute_distance.h"
+#define Points int32_t
+#define Point int16_t
+#define Coordinate int8_t
 #define Length int32_t
 
-Coordinate separateDigits(Point p, uint32_t from, uint32_t to) {
-    return ((p / (uint32_t)pow(10, from))) % (uint32_t)pow( 10, to - from );
-}
-Coordinate getX1(Point p) {
-    return separateDigits(p, 0, 2);
-}
-Coordinate getY1(Point p) {
-    return separateDigits(p, 2, 4);
-}
-Coordinate getX2(Point p) {
-    return separateDigits(p, 4, 6);
-}
-Coordinate getY2(Point p) {
-    return separateDigits(p, 6, 8);
-}
-Length dist_squared(Point p) {
+#define ARR_SIZE 26214400
 
-    Coordinate x1, x2, y1, y2;
-    x1 = getX1(p);
-    x2 = getX2(p);
-    y1 = getY1(p);
-    y2 = getY2(p);
-    Coordinate deltaX, deltaY;
-    deltaX = x2 - x1;
-    deltaY = y2 - y1;
-    return deltaX * deltaX + deltaY * deltaY;
-}
 int main() {
-    printf("Hello, World!\n");
+
+    Points* test = calloc(3, sizeof(Point));
+    test[0] = 0b10000000100000000000000000000000;
+    test[1] = 0b000000000000000000000000000000;
+    test[2] = 0b0000010000001000000000000000001;
+    printf("%lf", computeTotalDistance(test, 3));
     return 0;
 }
