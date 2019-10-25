@@ -1,6 +1,7 @@
 //
 // Created by MBTSKY on 24.10.2019.
 //
+#include <math.h>
 #include "types.h"
 double distance(Point p1, Point p2) {
     Coordinate x1, x2, y1, y2;

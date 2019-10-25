@@ -3,9 +3,6 @@
 #include <math.h>
 #include "compute_distance.h"
 #define Points int32_t
-#define Point int16_t
-#define Coordinate int8_t
-#define Length int32_t
 
 #define ARR_SIZE 26214400
 

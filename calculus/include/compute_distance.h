@@ -5,7 +5,7 @@
 #define STATIC_VERSION_LIB_H
 
 #include "types.h"
-#include "math.h"
+#include <math.h>
 //*******************************
 Length distance(Point p1, Point p2);
 double computeTotalDistance(const int32_t*const array, size_t size);
