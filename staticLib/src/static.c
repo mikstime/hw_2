@@ -2,22 +2,21 @@
 // Created by MBTSKY on 24.10.2019.
 //
 
-#include <stdlib.h>
-#include <sys/wait.h>
+#define Points int32_t
+#define Point int16_t
+#define Coordinate int8_t
+#define Length double
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
 #include "compute_distance.h"
-#include "types.h"
-void readFromStream(FILE* in, Points* arr, size_t size) {
-
-    for(size_t i = 0; i < size; i++)
-        fscanf(in, "%d", (arr + i));
-}
 
 double computeLengthSingleThreaded(Points* arr, size_t size) {
 
     return computeTotalDistance(arr, size);
 }
+
 void prepare_for_run(const size_t* const arr_size, const size_t* const num_cores,
         size_t* active_cors, size_t* arr_step) {
     if (*arr_size < *num_cores) {
@@ -28,6 +27,7 @@ void prepare_for_run(const size_t* const arr_size, const size_t* const num_cores
         *arr_step = *arr_size / *num_cores;
     }
 }
+
 double static_run(const Points* const arr, const size_t size) {
 
     Length curLength = 0, totalLength = 0;
@@ -47,7 +47,6 @@ double static_run(const Points* const arr, const size_t size) {
         pid = fork();
         if( pid == 0) {
             // Child process
-            //close(fd[2 * i]);
             curLength = computeTotalDistance((arr + i), chunk_size);
             write(fd[2 * i + 1], &curLength, sizeof(curLength));
             close(fd[2 * i + 1]);
@@ -72,7 +71,6 @@ double static_run(const Points* const arr, const size_t size) {
 
         totalLength += curLength;
     }
-    //free(fd);
 
     return totalLength;
 }

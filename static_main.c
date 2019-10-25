@@ -5,17 +5,15 @@
 #include <stdlib.h>
 #include "static.h"
 
-#define ARR_SIZE 2
 int main() {
-
-    Points* array = calloc(ARR_SIZE, sizeof(Points));
-
-    array[0] = 0b10000000100000000000000000000000;
-    array[1] = 0b1000000010000000111111101111111;
-    //printf("%d %d", array[0], array[1]);
-//            free(array);
-//            return EXIT_FAILURE;
-    Length res = static_run(array, ARR_SIZE);
+    size_t size;
+    if(scanf("%zu", &size))
+        return EXIT_FAILURE;
+    Points* array = calloc(size, sizeof(Points));
+    for(size_t i = 0; i < size; i++)
+        scanf("%i", &array[i]);
+    Length res = static_run(array, size);
     printf("\n%lf\n", res);
-
+    free(array);
+    return 0;
 }

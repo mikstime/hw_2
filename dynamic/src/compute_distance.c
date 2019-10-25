@@ -1,12 +1,8 @@
 //
 // Created by MBTSKY on 24.10.2019.
 //
-#define Points int32_t
-#define Point int16_t
-#define Coordinate int8_t
-#define Length double
 #include <math.h>
-
+#include "types.h"
 double distance(Point p1, Point p2) {
     Coordinate x1, x2, y1, y2;
     x1 = p1 >> 8;
@@ -21,7 +17,7 @@ double distance(Point p1, Point p2) {
     return sqrt((double)(deltaX * deltaX + deltaY * deltaY));
 }
 
-double computeTotalDistance(const int32_t* const array, size_t size) {
+double computeTotalDistance(const Points* const array, size_t size) {
 
     Point prev, next;
     double dist = 0;
