@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.7)
 project(hw_2)
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall  -lm")
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
 set(CMAKE_C_STANDARD 11)
