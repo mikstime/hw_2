@@ -22,7 +22,7 @@ int main() {
         return EXIT_FAILURE;
     }
     size_t size;
-    if(scanf("%zu", &size))
+    if(scanf("%zu", &size) != 1)
         return EXIT_FAILURE;
     Points* array = calloc(size, sizeof(Points));
 
