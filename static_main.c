@@ -18,5 +18,5 @@ int main() {
     Length res = static_run(array, size);
     printf("\n%lf\n", res);
     free(array);
-    return 0;
+    return EXIT_SUCCESS;
 }

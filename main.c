@@ -1,14 +1,17 @@
 #include <dlfcn.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "include/dynamic.h"
+
+#include "dynamic.h"
+#include "static.h"
 
 #define Points int32_t
 #define Point int16_t
 #define Coordinate int8_t
 #define Length double
-void *library;
 
+void *library;
+#define ARR_SIZE 10000
 int main() {
     //libdn_lib.so
     library = dlopen("dynamic_lib.so", RTLD_LAZY);
@@ -21,16 +24,17 @@ int main() {
     if (!imports) {
         return EXIT_FAILURE;
     }
-    size_t size;
-    if(scanf("%zu", &size))
-        return EXIT_FAILURE;
-    Points* array = calloc(size, sizeof(Points));
+    Points* array = calloc(ARR_SIZE, sizeof(Points));
 
-    for(size_t i = 0; i < size; i++)
-        scanf("%i", &array[i]);
+    Points p;
+    for(size_t i = 0; i < ARR_SIZE; i++) {
+        array[i] = rand();
 
-    Length res = imports->computeLength(array, size);
-    printf("%lf", res);
+    }
+
+    Length res1 = imports->computeLength(array, ARR_SIZE);
+    Length res2 = static_run(array, ARR_SIZE);
+    printf("%s", (res1 == res2 ? "Equal results" : "Something is wrong"));
     free(array);
     return EXIT_SUCCESS;
 }
