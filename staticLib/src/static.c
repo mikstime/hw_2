@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include <sys/sysinfo.h>
 #include "compute_distance.h"
 
 double computeLengthSingleThreaded(Points* arr, size_t size) {
@@ -32,7 +33,7 @@ double static_run(const Points* const arr, const size_t size) {
 
     Length curLength = 0, totalLength = 0;
     //@TODO dynamically
-    const size_t cores = 2;
+    const size_t cores = get_nprocs_conf();//2;
     size_t active_cores, chunk_size;
 
     prepare_for_run(&size, &cores, &active_cores, &chunk_size);
