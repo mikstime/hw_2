@@ -7,15 +7,16 @@
 #include <dlfcn.h>
 #include "../catch.hpp"
 extern "C" {
-#include "dynamic.h"
+    #include "dynamic.h"
 };
 
 void *library;
 TEST_CASE("Two Points", "Single Process algorithm") {
-    library = dlopen("dynamic_lib.so", RTLD_LAZY);
+    library = dlopen("libdynamic_lib.dylib", RTLD_LAZY);
     struct exportVtable *imports;
+
     REQUIRE(!!library == 1);
-    imports = dlsym(library, "exports");
+    imports = static_cast<exportVtable *>(dlsym(library, "exports"));
     REQUIRE(!!imports == 1);
 
     Points* points = new Points(1);
@@ -26,10 +27,10 @@ TEST_CASE("Two Points", "Single Process algorithm") {
 }
 TEST_CASE("Four points", "Single Process algorithm") {
 
-    library = dlopen("dynamic_lib.so", RTLD_LAZY);
+    library = dlopen("libdynamic_lib.dylib", RTLD_LAZY);
     struct exportVtable *imports;
     REQUIRE(!!library == 1);
-    imports = dlsym(library, "exports");
+    imports = static_cast<exportVtable *>(dlsym(library, "exports"));
     REQUIRE(!!imports == 1);
 
     Points* points = new Points(2);
@@ -41,10 +42,10 @@ TEST_CASE("Four points", "Single Process algorithm") {
 }
 TEST_CASE("Four Points №2", "Single Process algorithm") {
 
-    library = dlopen("dynamic_lib.so", RTLD_LAZY);
+    library = dlopen("libdynamic_lib.dylib", RTLD_LAZY);
     struct exportVtable *imports;
     REQUIRE(!!library == 1);
-    imports = dlsym(library, "exports");
+    imports = static_cast<exportVtable *>(dlsym(library, "exports"));
     REQUIRE(!!imports == 1);
 
     Points* points = new Points(2);

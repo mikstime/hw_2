@@ -11,7 +11,7 @@ void *library;
 
 int main() {
     //libdn_lib.so
-    library = dlopen("dynamic_lib.so", RTLD_LAZY);
+    library = dlopen("libdynamic_lib.dylib", RTLD_LAZY);
     struct exportVtable *imports;
     if (!library) {
         return EXIT_FAILURE;

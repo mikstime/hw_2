@@ -28,7 +28,6 @@ target_link_libraries(dynamic_main dynamic_lib)
 
 target_link_libraries(static_tests PUBLIC staticLib_lib)
 target_link_libraries(static_main PUBLIC staticLib_lib ${CMAKE_THREAD_LIBS_INIT})
-#target_link_libraries(dynamic_tests PRIVATE dynamic_lib ${CMAKE_DL_LIBS})
-#target_link_libraries(dynamic_main PRIVATE dynamic_lib ${CMAKE_DL_LIBS})
+target_link_libraries(dynamic_tests PRIVATE dynamic_lib ${CMAKE_DL_LIBS} PUBLIC staticLib_lib ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(main PRIVATE dynamic_lib ${CMAKE_DL_LIBS} PUBLIC staticLib_lib ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(main PUBLIC  PUBLIC staticLib_lib ${CMAKE_THREAD_LIBS_INIT})
