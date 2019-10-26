@@ -6,7 +6,7 @@
 #define Coordinate int8_t
 #define Length double
 
-#include "catch.hpp"
+#include "../catch.hpp"
 extern "C" {
 #include "static.h"
 };

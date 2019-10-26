@@ -1,7 +1,7 @@
 #include <dlfcn.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <include/dynamic.h>
+#include "include/dynamic.h"
 
 #define Points int32_t
 #define Point int16_t
